@@ -15,7 +15,8 @@ public class SecurityConfig {
         http
                 .csrf().disable()  // Desactivar CSRF (si es necesario)
                 .authorizeRequests()
-                .requestMatchers("/login", "/register").permitAll() // Permitir acceso público a login y register
+                .requestMatchers("/login", "/register").permitAll()  // Permitir acceso público a login y register
+                .requestMatchers("/api/usuarios/**").permitAll()  // Permitir acceso público a los endpoints de la API
                 .anyRequest().authenticated()  // El resto de las rutas requieren autenticación
                 .and()
                 .formLogin()

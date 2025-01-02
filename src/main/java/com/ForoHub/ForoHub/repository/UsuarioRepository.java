@@ -2,10 +2,9 @@ package com.ForoHub.ForoHub.repository;
 
 import com.ForoHub.ForoHub.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
 
-// La interfaz extiende JpaRepository, donde el primer parámetro es el tipo de la entidad (Usuario),
-// y el segundo parámetro es el tipo de la clave primaria (Long).
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
-    // Aquí puedes agregar métodos personalizados si los necesitas
-    // Ejemplo: List<Usuario> findByNombre(String nombre);
+    Optional<Usuario> findByEmail(String email); // Si tienes un campo de correo electrónico
+    boolean existsByEmail(String email); // Para verificar si el correo ya existe
 }
