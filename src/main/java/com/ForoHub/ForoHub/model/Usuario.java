@@ -1,9 +1,11 @@
-package com.ForoHub.ForoHub.models;
+package com.ForoHub.ForoHub.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
-@Table(name = "usuarios")
 public class Usuario {
 
     @Id
@@ -11,12 +13,11 @@ public class Usuario {
     private Long id;
 
     private String nombre;
-
     private String email;
-
-    private String contraseña;
+    private String contrasena;
 
     // Getters y Setters
+
     public Long getId() {
         return id;
     }
@@ -41,11 +42,11 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 }

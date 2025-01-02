@@ -1,4 +1,4 @@
-package com.ForoHub.ForoHub.models;
+package com.ForoHub.ForoHub.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;

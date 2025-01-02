@@ -1,4 +1,4 @@
-package com.ForoHub.ForoHub.models;
+package com.ForoHub.ForoHub.model;
 
 public enum EstadoTopico {
     ABIERTO,
