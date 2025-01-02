@@ -1,32 +1,33 @@
 package com.ForoHub.ForoHub.model;
 
-import jakarta.persistence.*;
-import java.time.LocalDateTime;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotEmpty;
+
 
 @Entity
-@Table(name = "topicos")
 public class Topico {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty(message = "El título es obligatorio")
     private String titulo;
 
+    @NotEmpty(message = "El mensaje es obligatorio")
     private String mensaje;
 
-    private LocalDateTime fechaCreacion = LocalDateTime.now();
+    @NotEmpty(message = "El autor es obligatorio")
+    private String autor;
 
-    @Enumerated(EnumType.STRING)
-    private EstadoTopico estado = EstadoTopico.ABIERTO;
-
-    @ManyToOne
-    private Usuario autor;
-
-    @ManyToOne
-    private Curso curso;
+    @NotEmpty(message = "El curso es obligatorio")
+    private String curso;
 
     // Getters y Setters
+
     public Long getId() {
         return id;
     }
@@ -51,31 +52,19 @@ public class Topico {
         this.mensaje = mensaje;
     }
 
-    public LocalDateTime getFechaCreacion() {
-        return fechaCreacion;
-    }
-
-    public EstadoTopico getEstado() {
-        return estado;
-    }
-
-    public void setEstado(EstadoTopico estado) {
-        this.estado = estado;
-    }
-
-    public Usuario getAutor() {
+    public String getAutor() {
         return autor;
     }
 
-    public void setAutor(Usuario autor) {
+    public void setAutor(String autor) {
         this.autor = autor;
     }
 
-    public Curso getCurso() {
+    public String getCurso() {
         return curso;
     }
 
-    public void setCurso(Curso curso) {
+    public void setCurso(String curso) {
         this.curso = curso;
     }
 }
