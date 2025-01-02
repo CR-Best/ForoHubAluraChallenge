@@ -12,19 +12,19 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        // Configuración de las rutas públicas y protegidas
         http
-                .csrf().disable() // Si lo necesitas, puedes deshabilitar CSRF
+                .csrf().disable()  // Desactivar CSRF (si es necesario)
                 .authorizeRequests()
-                .requestMatchers("/login", "/register").permitAll() // Acceso público a estas rutas
-                .anyRequest().authenticated() // El resto requiere autenticación
+                .requestMatchers("/login", "/register").permitAll() // Permitir acceso público a login y register
+                .anyRequest().authenticated()  // El resto de las rutas requieren autenticación
                 .and()
                 .formLogin()
-                .loginPage("/login") // Página personalizada de login (si la tienes)
-                .permitAll()
+                .loginPage("/login")  // Página personalizada de login
+                .defaultSuccessUrl("/home", true) // Redirigir a la página principal después del login exitoso
+                .permitAll()  // Permitir acceso público a la página de login
                 .and()
                 .logout()
-                .permitAll(); // Permitir cierre de sesión
+                .permitAll();  // Permitir cierre de sesión
 
         return http.build();
     }
